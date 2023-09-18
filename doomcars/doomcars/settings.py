@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-qqipq!u^z0hjogdmuvu0z7d@_pnb$pv82r1g$0-4&d8%69jblg
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['.vercel.app']
 
 
 # Application definition
@@ -39,8 +39,10 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    'api',
+    'todo',
 ]
-
+LOGIN_URL='login'
 MIDDLEWARE = [
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.security.SecurityMiddleware",
@@ -51,7 +53,7 @@ MIDDLEWARE = [
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
-
+LOGIN_REDIRECT_URL='all-notes'
 ROOT_URLCONF = "doomcars.urls"
 
 TEMPLATES = [
