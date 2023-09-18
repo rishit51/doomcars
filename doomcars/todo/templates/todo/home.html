@@ -1,0 +1,27 @@
+{% extends "todo/base.html" %} {% block content %}
+<h1>Notes:</h1>
+<ul style="list-style: none">
+  {% for note in notes %}
+  <li style="padding: 1%; margin: 2%; border: 4px solid rgb(198, 126, 18)">
+    <a href='{% url "note" note.id %}'>
+      <div>
+        <div>
+          <h3>{{note.title}}</h3>
+        </div>
+        <div>{{note.text}}</div>
+      </div>
+      <div style="display: flex; justify-content: space-evenly">
+        <form action="" method="post">
+          {% csrf_token %}
+          <input type="hidden" value="{{note.id}}" name="note_id" />
+          <button type="submit" value="">Mark as completed</button>
+        </form>
+
+        <a href="{{note.id}}/delete/">Delete</a>
+      </div>
+    </a>
+  </li>
+  {% endfor %}
+</ul>
+
+{% endblock content %}

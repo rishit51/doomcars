@@ -1,0 +1,23 @@
+{% extends "todo/base.html" %} {% block content %}
+
+<h1>My notes:</h1>
+
+<ul style="list-style: none">
+  {% for note in notes %}
+  <li>
+    <h3>{{note.title}}</h3>
+    <p>{{note.task}}</p>
+    <div style="display: flex; justify-content: flex-end">
+      <span
+        >Is completed ?
+        <span>
+          {% if note.completed %} 👌 {% else %} e🤞 {% endif %}
+        </span></span
+      >
+    </div>
+  </li>
+
+  {% endfor %}
+</ul>
+
+{% endblock content %}

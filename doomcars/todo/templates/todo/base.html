@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{title}}</title>
+  </head>
+  <body>
+    <nav>
+      <ul
+        style="
+          list-style: none;
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          order: 0;
+        "
+      >
+        <li style="align-self: flex-start; order: -1">
+          <h1><a href="{% url 'all-notes'%}">Todo App:</a></h1>
+        </li>
+
+        {% if request.user.is_authenticated %}
+        <li><a href="{% url 'user-notes' %}">My Notes</a></li>
+        <li>My Statistics</li>
+        <li>Welcome {{request.user.username}}</li>
+        <li><a href="{% url 'logout' %}">Logout</a></li>
+        {% endif %}
+      </ul>
+    </nav>
+    {% block content %}{% endblock content %}
+  </body>
+</html>
